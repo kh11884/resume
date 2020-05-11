@@ -1,32 +1,131 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      class="d-print-none"
+    >
+      <v-list dense>
+        <v-list-item link>
+          <div>
+            <router-link tag="div" to="/">
+              <v-row>
+                <v-icon>mdi-account</v-icon>
+                <v-list-item-content class="ml-2">
+                  <v-list-item-title>Обо мне</v-list-item-title>
+                </v-list-item-content>
+              </v-row>
+            </router-link>
+          </div>
+        </v-list-item>
+
+        <v-list-item link>
+          <div>
+            <router-link tag="div" to="/experience">
+              <v-row>
+                <v-icon>mdi-account-hard-hat</v-icon>
+                <v-list-item-content class="ml-2">
+                  <v-list-item-title>Опыт работы</v-list-item-title>
+                </v-list-item-content>
+              </v-row>
+            </router-link>
+          </div>
+        </v-list-item>
+
+        <v-list-item link>
+          <div>
+            <router-link tag="div" to="/study">
+              <v-row>
+                <v-icon>mdi-school</v-icon>
+                <v-list-item-content class="ml-2">
+                  <v-list-item-title>Образование</v-list-item-title>
+                </v-list-item-content>
+              </v-row>
+            </router-link>
+          </div>
+        </v-list-item>
+
+        <v-list-item>
+          <div>
+            <router-link tag="div" to="/additionalEducation">
+              <v-list-item-action>
+                <v-row>
+                  <v-icon>mdi-cast-education</v-icon>
+                  <v-list-item-content class="ml-2">
+                    <v-list-item-title>Курсы (доп. обучение)</v-list-item-title>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item-action>
+            </router-link>
+          </div>
+        </v-list-item>
+
+        <v-list-item link>
+          <div>
+            <router-link tag="div" to="/Skills">
+              <v-list-item-action>
+                <v-row>
+                  <v-icon>mdi-tools</v-icon>
+                  <v-list-item-content class="ml-2">
+                    <v-list-item-title>Ключевые навыки</v-list-item-title>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item-action>
+            </router-link>
+          </div>
+        </v-list-item>
+
+        <v-list-item>
+          <div>
+            <router-link tag="div" to="/recommendations">
+              <v-list-item-action>
+                <v-row>
+                  <v-icon>mdi-account-voice</v-icon>
+                  <v-list-item-content class="ml-2">
+                    <v-list-item-title>Рекомендации</v-list-item-title>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item-action>
+            </router-link>
+          </div>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar
+      app
+      color="indigo"
+      dark
+      class="d-print-none"
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+      <v-toolbar-title>Андрей Хорошунов</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <router-view/>
+    </v-content>
+
+    <v-footer
+      color="indigo"
+      app
+      class="d-print-none"
+    >
+      <span class="white--text">&copy; 2020</span>
+    </v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  export default {
+    name: 'App',
 
-#nav {
-  padding: 30px;
+    props: {
+      source: String,
+    },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+    data: () => ({
+      drawer: null,
+    }),
+  };
+</script>
