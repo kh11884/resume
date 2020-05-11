@@ -18,12 +18,19 @@
         </v-list-item>
       </v-list>
     </v-card-text>
+
+    <v-btn
+      color="primary"
+      @click="loadData"
+    >GetExperience from Server
+    </v-btn>
   </v-card>
 </template>
 
 <script>
   export default {
     name: 'Experience',
+
     data () {
       return {
         rows: [
@@ -53,27 +60,28 @@
           }
         ],
         testField: 0,
+        loading: true,
+        term: ''
       }
     },
     methods: {
-      getWeekCapacity: function () {
-        this.showSpinner = true
+      loadData: function () {
         var self = this
-        self.showWeekCapacity = false
+
         $.ajax({
-          type: 'POST',
-          url: '/capacityCalculator/getWeekCapacity',
-          contentType: 'application/json'
-        }).done(function (responce) {
-          self.rows = responce
-          self.showWeekCapacity = true
-        }).fail(function () {
-          self.errorMessage = 'The request could not be completed, please try again later.'
-        }).always(function () {
-          self.showSpinner = false
+          type: 'GET',
+          url: '/resume/rpc/api/v1/getExperience',
+          data: {
+            term: self.term
+          }
+        }).done(function (contactListFormServer) {
+          self.rows = self.contactListFormServer
         })
-      }
+      },
     },
+    created () {
+
+    }
   }
 </script>
 
