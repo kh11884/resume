@@ -18,12 +18,6 @@
         </v-list-item>
       </v-list>
     </v-card-text>
-
-    <v-btn
-      color="primary"
-      @click="loadData"
-    >GetExperience from Server
-    </v-btn>
   </v-card>
 </template>
 
@@ -33,32 +27,7 @@
 
     data () {
       return {
-        rows: [
-          {
-            date: 'Июль 2019 — по настоящее время',
-            place: 'ООО "С7 КАРГО"',
-            position: 'Старший декларант',
-            responsibility: 'Старший смены. организация работы в смене: распределение текущей работы, контроль исполнения.'
-          },
-          {
-            date: 'Март 2008 — июль 2019',
-            place: 'ООО "С7 КАРГО"',
-            position: 'Специалист по таможенному оформлению',
-            responsibility: 'таможенное оформление товаров перемещаемых в рамках внешнеторговых контрактов.'
-          },
-          {
-            date: 'Апрель 2004 — март 2008',
-            place: 'ОАО "Авиакомпания "Сибирь"',
-            position: 'Эксперт по грузовым перевозкам',
-            responsibility: 'Создание и поддержание агентской сети продаж грузовых авиаперевозок.'
-          },
-          {
-            date: 'Июнь 2002 — март 2004',
-            place: 'ОАО "Сибакадембанк"',
-            position: 'Специалист управления маркетинга и рекламы',
-            responsibility: 'Анализ рынка розничных банковских услуг. Разработка, внедрение и продвижение банковских продуктов и услуг. Формирование имиджа банка. Работа с подрядчиками по производству рекламы.'
-          }
-        ],
+        rows: [],
         testField: 0,
         loading: true,
         term: ''
@@ -74,13 +43,13 @@
           data: {
             term: self.term
           }
-        }).done(function (contactListFormServer) {
-          self.rows = self.contactListFormServer
+        }).done(function (experiencesListFormServer) {
+          self.rows = experiencesListFormServer
         })
       },
     },
     created () {
-
+      this.loadData()
     }
   }
 </script>

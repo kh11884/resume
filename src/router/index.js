@@ -18,22 +18,22 @@ const routes = [
   {
     path: '/study',
     name: 'Study',
-    component: () => import('../views/Temporal.vue')
+    component: () => import('../views/Study.vue')
   },
   {
     path: '/additionalEducation',
     name: 'AdditionalEducation',
-    component: () => import('../views/Temporal.vue')
+    component: () => import('../views/AdditionalEducation.vue')
   },
   {
     path: '/skills',
     name: 'Skills',
-    component: () => import('../views/Temporal.vue')
+    component: () => import('../views/Skills.vue')
   },
   {
     path: '/recommendations',
     name: 'Recommendations',
-    component: () => import('../views/Temporal.vue')
+    component: () => import('../views/Recommendations.vue')
   },
   {
     path: '/temporal',
