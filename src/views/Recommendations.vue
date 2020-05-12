@@ -11,7 +11,7 @@
             <v-col>
               <p class="font-weight-black">{{contact.fullName}}</p>
               <p>{{contact.position}}</p>
-              <p><a :href="contact.email"></a></p>
+              <p>{{contact.email}}</p>
             </v-col>
           </v-row>
         </v-list-item>
@@ -28,7 +28,7 @@
         contacts: [{
           fullName: 'Анна Усова',
           position: 'Руководитель Academ IT School',
-          email: 'mailto:academits@gmail.com'
+          email: 'academits@gmail.com'
         }],
 
       }

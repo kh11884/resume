@@ -25,60 +25,23 @@
     name: 'AdditionalEducation',
     data () {
       return {
-        rows: [
-          {
-            date: 'январь - март 2020',
-            university: 'Academ IT School',
-            chapter: 'Серверная веб-разработка на JAVA'
-          },
-          {
-            date: 'октябрь - декабрь 2019',
-            university: 'Academ IT School',
-            chapter: 'Клиентская веб-разработка (HTML, CSS, JAVASCRIPT)'
-          },
-          {
-            date: 'июль - сентябрь 2019',
-            university: 'Academ IT School',
-            chapter: 'Объектно-ориентированное программирование на JAVA'
-          },
-          {
-            date: 'январь - март 2020',
-            university: 'Academ IT School',
-            chapter: 'Серверная веб-разработка на JAVA'
-          },
-          {
-            date: 'апрель - июнь 2019',
-            university: 'Academ IT School',
-            chapter: 'Тестирование программного обеспечения'
-          },
-          {
-            date: 'апрель - июнь 2019',
-            university: 'Academ IT School',
-            chapter: 'Основы баз данных и язык SQL'
-          },
-          {
-            date: 'январь - март 2020',
-            university: 'Academ IT School',
-            chapter: 'Основы программирования JAVA'
-          },
-          {
-            date: 'сентябрь 2009',
-            university: 'Сибирский центр развития авиационного бизнеса',
-            chapter: 'Перевозка опасных грузов воздушным транспортом'
-          },
-          {
-            date: 'февраль-апрель 2008',
-            university: 'НП «ЦК ОСТО СФО»',
-            chapter: 'Курсы по подготовке специалистов по таможенному оформлению'
-          },
-          {
-            date: 'октябрь 2005',
-            university: 'IATA Training & Development Institute',
-            chapter: 'Навыки и процедуры грузовых перевозок воздушным транспортом'
-          }
-        ],
-
+        rows: [],
       }
+    },
+    methods: {
+      loadData: function () {
+        var self = this
+
+        $.ajax({
+          type: 'GET',
+          url: '/resume/rpc/api/v1/getCourses'
+        }).done(function (coursesListFormServer) {
+          self.rows = coursesListFormServer
+        })
+      },
+    },
+    created () {
+        this.loadData();
     }
   }
 </script>

@@ -39,10 +39,7 @@
 
         $.ajax({
           type: 'GET',
-          url: '/resume/rpc/api/v1/getExperience',
-          data: {
-            term: self.term
-          }
+          url: '/resume/rpc/api/v1/getExperience'
         }).done(function (experiencesListFormServer) {
           self.rows = experiencesListFormServer
         })
