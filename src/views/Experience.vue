@@ -27,10 +27,7 @@
 
     data () {
       return {
-        rows: [],
-        testField: 0,
-        loading: true,
-        term: ''
+        rows: []
       }
     },
     methods: {

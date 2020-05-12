@@ -3,19 +3,26 @@
     class="mx-auto"
     max-width="640"
     outlined>
-    <v-card-title>Дополнительное обучение</v-card-title>
+    <v-card-title>Дополнительное обучение
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Поиск"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-card-title>
+
     <v-card-text>
-      <v-list v-for="row in rows">
-        <v-list-item>
-          <v-row>
-            <v-col cols="3">{{row.date}}</v-col>
-            <v-col>
-              <p class="font-weight-black">{{row.chapter}}</p>
-              <p>{{row.university}}</p>
-            </v-col>
-          </v-row>
-        </v-list-item>
-      </v-list>
+      <v-data-table
+        :headers="headers"
+        :items="rows"
+        :search="search"
+        :items-per-page="5"
+        multi-sort
+        class="elevation-1"
+      ></v-data-table>
     </v-card-text>
   </v-card>
 </template>
@@ -25,6 +32,23 @@
     name: 'AdditionalEducation',
     data () {
       return {
+        search: '',
+        headers: [
+          {
+            text: 'Период',
+            align: 'start',
+            sortable: false,
+            value: 'date',
+          },
+          {
+            text: 'Учебное заведение',
+            value: 'university'
+          },
+          {
+            text: 'Специализация',
+            value: 'chapter'
+          }
+        ],
         rows: [],
       }
     },
@@ -41,7 +65,7 @@
       },
     },
     created () {
-        this.loadData();
+      this.loadData()
     }
   }
 </script>
